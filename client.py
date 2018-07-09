@@ -56,7 +56,8 @@ def updateTwitterStatus():
     message = 'Intruso detectado, fecha: ' + now
     twitter.update_status(status=message, media_ids=[response['media_id']])
 
-def sendSms(message):
+def sendSms(now):
+    message = 'Intruso detectado, fecha: ' + now
     twilioClient.messages.create(
         body=message,
         from_='(859) 594-7466',
@@ -68,7 +69,8 @@ while True:
     if(read_ser==b'1' and flag):
         intentos = 0
         db.child("intruso").update({"flag": True})
-        #sendSms('#ZuñeChipi')
+        now = datetime.datetime.now().isoformat()
+        sendSms(now)
         while intentos < 5:
             updateTwitterStatus()
             intentos+=1
