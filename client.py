@@ -27,7 +27,7 @@ twilioClient = Client(twilio_account_sid, twilio_auth_token)
 ser = serial.Serial("/dev/ttyACM0", baudrate=9600)
 
 firebaseConfig = {
-  "apiKey": "AIzaSyBvDnIBvcyBvjlk9yN02IxhpY84dauJDdM",
+  "apiKey": os.environ['FIREBASE_API_KEY'],
   "authDomain": "sistemasdistribuidosg4.firebaseapp.com",
   "databaseURL": "https://sistemasdistribuidosg4.firebaseio.com",
   "storageBucket": "sistemasdistribuidosg4.appspot.com"
